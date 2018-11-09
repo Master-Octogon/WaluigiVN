@@ -3,31 +3,29 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+define w = Character("Waluigi")
 
 
 # The game starts here.
 
 label start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
+    "Waht, is my name?"
+    $ input_test = renpy.input("Name: ")
+    $ name = input_test.strip() or "Luigi"
+    if name == "Waluigi":
+        w"Correct!"
+        w"It's Waluigi story time!"
+    else:
+        w"WRONG! My name is not [name]. My name is Waluigi."
+        w"It's Waluigi story time."
 
-    scene bg room
+    w"Time to test pathing"
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    show eileen happy
-
-    # These display lines of dialogue.
-
-    e "You've created a new Ren'Py game."
-
-    e "Once you add a story, pictures, and music, you can release it to the world!"
-
-    # This ends the game.
-
+    menu:
+        "Which path?"
+        "Path1":
+            jump path1
+        "Path2":
+            jump path2
     return
